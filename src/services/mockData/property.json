@@ -1,0 +1,176 @@
+[
+  {
+    "Id": 1,
+    "address": "1247 Maple Street, Beverly Hills, CA 90210",
+    "price": 2850000,
+    "bedrooms": 4,
+    "bathrooms": 3.5,
+    "squareFeet": 3200,
+    "propertyType": "Single Family Home",
+    "images": [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800"
+    ],
+    "description": "Stunning contemporary home in the heart of Beverly Hills featuring an open floor plan, gourmet kitchen with high-end appliances, and luxurious master suite. The backyard oasis includes a pool, spa, and outdoor entertainment area perfect for California living.",
+    "features": [
+      "Pool and Spa",
+      "Gourmet Kitchen",
+      "Walk-in Closets",
+      "Hardwood Floors",
+      "Smart Home Technology",
+      "Two-Car Garage"
+    ],
+    "latitude": 34.0736,
+    "longitude": -118.4004,
+    "listingDate": "2024-01-15T00:00:00Z",
+    "mlsNumber": "BH24001247"
+  },
+  {
+    "Id": 2,
+    "address": "892 Ocean View Drive, Malibu, CA 90265",
+    "price": 4750000,
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "squareFeet": 4100,
+    "propertyType": "Single Family Home",
+    "images": [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+      "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=800",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800"
+    ],
+    "description": "Breathtaking oceanfront estate with panoramic Pacific views. This architectural masterpiece offers seamless indoor-outdoor living with floor-to-ceiling windows, a chef's kitchen, and multiple outdoor decks. Private beach access and infinity pool complete this coastal paradise.",
+    "features": [
+      "Ocean Views",
+      "Private Beach Access",
+      "Infinity Pool",
+      "Chef's Kitchen",
+      "Floor-to-Ceiling Windows",
+      "Multiple Decks",
+      "Wine Cellar"
+    ],
+    "latitude": 34.0259,
+    "longitude": -118.7798,
+    "listingDate": "2024-01-18T00:00:00Z",
+    "mlsNumber": "ML24000892"
+  },
+  {
+    "Id": 3,
+    "address": "456 Park Avenue, Manhattan, NY 10016",
+    "price": 3200000,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "squareFeet": 2100,
+    "propertyType": "Condo",
+    "images": [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800"
+    ],
+    "description": "Elegant pre-war condo on prestigious Park Avenue with classic details and modern amenities. Features include original hardwood floors, high ceilings, marble bathrooms, and a renovated kitchen. Building amenities include doorman, fitness center, and rooftop terrace.",
+    "features": [
+      "Pre-War Architecture",
+      "Doorman Building",
+      "Fitness Center",
+      "Rooftop Terrace",
+      "Marble Bathrooms",
+      "High Ceilings",
+      "Storage Unit"
+    ],
+    "latitude": 40.7505,
+    "longitude": -73.9934,
+    "listingDate": "2024-01-20T00:00:00Z",
+    "mlsNumber": "NY24000456"
+  },
+  {
+    "Id": 4,
+    "address": "789 Lakefront Way, Austin, TX 78746",
+    "price": 1850000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 3500,
+    "propertyType": "Single Family Home",
+    "images": [
+      "https://images.unsplash.com/photo-1600566752734-caf3ca2e2bd8?w=800",
+      "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=800",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800"
+    ],
+    "description": "Modern lakefront home with stunning water views and private dock. Open concept design with soaring ceilings, gourmet kitchen, and master suite with lake views. Perfect for entertaining with multiple outdoor living spaces and direct lake access.",
+    "features": [
+      "Lake Views",
+      "Private Dock",
+      "Open Concept",
+      "Soaring Ceilings",
+      "Multiple Outdoor Spaces",
+      "Direct Lake Access",
+      "Guest Suite"
+    ],
+    "latitude": 30.2672,
+    "longitude": -97.7431,
+    "listingDate": "2024-01-22T00:00:00Z",
+    "mlsNumber": "AT24000789"
+  },
+  {
+    "Id": 5,
+    "address": "321 Historic District, Charleston, SC 29401",
+    "price": 1250000,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "squareFeet": 2400,
+    "propertyType": "Townhouse",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800",
+      "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800"
+    ],
+    "description": "Charming historic townhouse in Charleston's coveted French Quarter. Beautifully restored with period details including original hardwood floors, exposed brick, and working fireplaces. Private courtyard garden and rooftop terrace offer outdoor sanctuary in the city.",
+    "features": [
+      "Historic Details",
+      "Original Hardwood",
+      "Exposed Brick",
+      "Working Fireplaces",
+      "Private Courtyard",
+      "Rooftop Terrace",
+      "Period Features"
+    ],
+    "latitude": 32.7767,
+    "longitude": -79.9311,
+    "listingDate": "2024-01-25T00:00:00Z",
+    "mlsNumber": "CH24000321"
+  },
+  {
+    "Id": 6,
+    "address": "1542 Mountain View Lane, Aspen, CO 81611",
+    "price": 6500000,
+    "bedrooms": 6,
+    "bathrooms": 5.5,
+    "squareFeet": 5200,
+    "propertyType": "Single Family Home",
+    "images": [
+      "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=800",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"
+    ],
+    "description": "Magnificent mountain estate with breathtaking views of the Rockies. This luxury home features vaulted ceilings, stone fireplaces, gourmet kitchen, and spa-like master suite. Outdoor amenities include hot tub, fire pit, and expansive decks for year-round entertaining.",
+    "features": [
+      "Mountain Views",
+      "Vaulted Ceilings",
+      "Stone Fireplaces",
+      "Spa-like Master",
+      "Hot Tub",
+      "Fire Pit",
+      "Ski Storage",
+      "Wine Room"
+    ],
+    "latitude": 39.1911,
+    "longitude": -106.8175,
+    "listingDate": "2024-01-28T00:00:00Z",
+    "mlsNumber": "AS24001542"
+  }
+]
