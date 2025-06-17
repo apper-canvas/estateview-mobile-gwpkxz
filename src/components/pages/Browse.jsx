@@ -132,7 +132,7 @@ const Browse = () => {
                   Browse Properties
                 </h1>
                 <p className="text-gray-600">
-                  {filteredProperties.length} propert{filteredProperties.length !== 1 ? 'ies' : 'y'} found
+                  {filteredProperties.length} propert{filteredProperties.length !== 1 ? 'ies' : 'y'} founded
                 </p>
               </div>
 
