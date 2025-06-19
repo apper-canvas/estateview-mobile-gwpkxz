@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
 import ApperIcon from '@/components/ApperIcon';
@@ -52,15 +52,15 @@ const Browse = () => {
     } finally {
       setLoading(false);
     }
-  }, [filters]);
+}, [filters]);
 
   useEffect(() => {
     loadProperties();
-  }, [loadProperties]);
+  }, [filters]);
 
-  // Apply sorting
-  useEffect(() => {
-    const sorted = [...filteredProperties].sort((a, b) => {
+  // Apply sorting with useMemo to prevent unnecessary re-renders
+  const sortedProperties = useMemo(() => {
+    return [...filteredProperties].sort((a, b) => {
       switch (sortBy) {
         case 'newest':
           return new Date(b.listingDate) - new Date(a.listingDate);
@@ -78,8 +78,7 @@ const Browse = () => {
           return 0;
       }
     });
-    setFilteredProperties(sorted);
-  }, [properties, sortBy]);
+  }, [filteredProperties, sortBy]);
 
   const handleFiltersChange = useCallback((newFilters) => {
     setFilters(newFilters);
@@ -130,9 +129,9 @@ const Browse = () => {
               <div>
                 <h1 className="text-2xl md:text-3xl font-display font-semibold text-gray-900 mb-2">
                   Browse Properties
-                </h1>
+</h1>
                 <p className="text-gray-600">
-                  {filteredProperties.length} propert{filteredProperties.length !== 1 ? 'ies' : 'y'} founded
+                  {sortedProperties.length} propert{sortedProperties.length !== 1 ? 'ies' : 'y'} founded
                 </p>
               </div>
 
@@ -177,9 +176,9 @@ const Browse = () => {
               </div>
             </div>
 
-            {/* Properties Display */}
+{/* Properties Display */}
             <AnimatePresence mode="wait">
-              {filteredProperties.length === 0 ? (
+              {sortedProperties.length === 0 ? (
                 <EmptyState
                   title="No properties found"
                   description="Try adjusting your filters to see more properties."
@@ -192,11 +191,11 @@ const Browse = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                >
+>
                   {viewMode === 'grid' ? (
-                    <PropertyGrid properties={filteredProperties} />
+                    <PropertyGrid properties={sortedProperties} />
                   ) : (
-                    <PropertyList properties={filteredProperties} />
+                    <PropertyList properties={sortedProperties} />
                   )}
                 </motion.div>
               )}
