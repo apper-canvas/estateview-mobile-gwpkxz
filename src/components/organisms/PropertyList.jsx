@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -5,7 +6,7 @@ import { toast } from 'react-toastify';
 import ApperIcon from '@/components/ApperIcon';
 import { propertyService, favoriteService, useFavorites } from '@/services';
 
-const PropertyList = ({ properties = [], className = '' }) => {
+const PropertyList = memo(({ properties = [], className = '' }) => {
   const navigate = useNavigate();
   const { favorites } = useFavorites();
   const [toggleStates, setToggleStates] = useState({});
@@ -61,20 +62,22 @@ const PropertyList = ({ properties = [], className = '' }) => {
     navigate(`/property/${property.Id}`);
   };
 
-  return (
+return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      layout
       className={`space-y-4 ${className}`}
     >
       {properties.map((property) => {
         const isFavorited = favorites.some(fav => fav.propertyId === property.Id.toString());
         const isToggling = toggleStates[property.Id.toString()];
 
-        return (
+return (
           <motion.div
             key={property.Id}
+            layout="position"
             variants={itemVariants}
             whileHover={{ y: -2 }}
             onClick={() => handlePropertyClick(property)}
@@ -151,8 +154,10 @@ const PropertyList = ({ properties = [], className = '' }) => {
           </motion.div>
         );
       })}
-    </motion.div>
+</motion.div>
   );
-};
+});
+
+PropertyList.displayName = 'PropertyList';
 
 export default PropertyList;

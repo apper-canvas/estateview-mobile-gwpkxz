@@ -89,12 +89,13 @@ const MapComponent = ({ properties = [], selectedProperty, onPropertySelect, cla
           const y = ((marker.lat - 33.5) / 1) * 100; // Normalize latitude to percentage
           const isSelected = selectedProperty?.Id === marker.id;
 
-          return (
+return (
             <motion.div
               key={marker.id}
+              layout="position"
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
+              transition={{ delay: index * 0.05, layout: { duration: 0.3 } }}
               style={{
                 position: 'absolute',
                 left: `${Math.min(Math.max(x, 5), 95)}%`,
@@ -102,10 +103,11 @@ const MapComponent = ({ properties = [], selectedProperty, onPropertySelect, cla
                 transform: 'translate(-50%, -100%)'
               }}
               className="z-20"
-            >
+>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.1 }}
                 onClick={() => handleMarkerClick(marker)}
                 className={`relative flex flex-col items-center ${
                   isSelected ? 'z-30' : 'z-20'

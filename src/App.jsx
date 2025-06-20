@@ -14,7 +14,7 @@ function App() {
               path={route.path} 
               element={<route.component />} 
             />
-          ))}
+))}
         </Route>
       </Routes>
       <ToastContainer

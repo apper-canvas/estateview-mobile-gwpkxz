@@ -1,14 +1,15 @@
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from 'react-toastify';
-import ApperIcon from '@/components/ApperIcon';
-import SkeletonLoader from '@/components/atoms/SkeletonLoader';
-import ErrorState from '@/components/atoms/ErrorState';
-import EmptyState from '@/components/atoms/EmptyState';
-import PropertyFilters from '@/components/molecules/PropertyFilters';
-import PropertyCard from '@/components/molecules/PropertyCard';
-import MapComponent from '@/components/organisms/MapComponent';
-import { propertyService } from '@/services';
+import React, { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { useWindowSize } from "react-use";
+import ApperIcon from "@/components/ApperIcon";
+import PropertyCard from "@/components/molecules/PropertyCard";
+import PropertyFilters from "@/components/molecules/PropertyFilters";
+import MapComponent from "@/components/organisms/MapComponent";
+import EmptyState from "@/components/atoms/EmptyState";
+import ErrorState from "@/components/atoms/ErrorState";
+import SkeletonLoader from "@/components/atoms/SkeletonLoader";
+import { propertyService } from "@/services/index";
 
 const MapView = () => {
   const [properties, setProperties] = useState([]);
@@ -18,6 +19,7 @@ const MapView = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const [filters, setFilters] = useState({});
   const [showFilters, setShowFilters] = useState(false);
+  const { width } = useWindowSize();
 
   const loadProperties = useCallback(async () => {
     setLoading(true);
@@ -123,14 +125,17 @@ const MapView = () => {
           )}
         </AnimatePresence>
 
-        {/* Desktop Sidebar */}
-        <AnimatePresence>
+{/* Desktop Sidebar */}
+        <AnimatePresence mode="wait">
           {showSidebar && (
             <motion.div
+              layout
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: 384, opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
               className="hidden md:flex flex-col border-r border-gray-200 bg-white overflow-hidden"
+              style={{ willChange: 'width' }}
             >
               {/* Sidebar Header */}
               <div className="p-4 border-b border-gray-200">
@@ -211,14 +216,15 @@ const MapView = () => {
               <ApperIcon name="Filter" className="w-5 h-5 text-gray-600" />
             </motion.button>
           </div>
-
-          {/* Selected Property Info */}
-          <AnimatePresence>
+{/* Selected Property Info */}
+          <AnimatePresence mode="wait">
             {selectedProperty && (
               <motion.div
+                layout="position"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.2, layout: { duration: 0.3 } }}
                 className="absolute bottom-4 left-4 right-4 md:left-4 md:right-auto md:max-w-sm z-30"
               >
                 <div className="bg-white rounded-12 shadow-lg overflow-hidden">

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useLayoutEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
 import ApperIcon from '@/components/ApperIcon';
@@ -50,13 +50,13 @@ const Browse = () => {
       setError(err.message || 'Failed to load properties');
       toast.error('Failed to load properties');
     } finally {
-      setLoading(false);
+setLoading(false);
     }
-}, [filters]);
-
-  useEffect(() => {
-    loadProperties();
   }, [filters]);
+
+  useLayoutEffect(() => {
+    loadProperties();
+  }, [loadProperties]);
 
   // Apply sorting with useMemo to prevent unnecessary re-renders
   const sortedProperties = useMemo(() => {
@@ -111,8 +111,8 @@ const Browse = () => {
     );
   }
 
-  return (
-    <div className="flex-1 overflow-y-auto bg-background">
+return (
+    <div className="flex-1 overflow-y-auto bg-background" style={{ willChange: 'scroll-position' }}>
       <div className="container mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
           {/* Filters Sidebar */}
@@ -177,7 +177,7 @@ const Browse = () => {
             </div>
 
 {/* Properties Display */}
-            <AnimatePresence mode="wait">
+<AnimatePresence mode="wait">
               {sortedProperties.length === 0 ? (
                 <EmptyState
                   title="No properties found"
@@ -187,11 +187,13 @@ const Browse = () => {
               ) : (
                 <motion.div
                   key={viewMode}
+                  layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
->
+                  transition={{ duration: 0.3, layout: { duration: 0.2 } }}
+                  style={{ willChange: 'transform' }}
+                >
                   {viewMode === 'grid' ? (
                     <PropertyGrid properties={sortedProperties} />
                   ) : (

@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useWindowSize } from 'react-use';
 import ApperIcon from '@/components/ApperIcon';
 import Button from '@/components/atoms/Button';
 import Input from '@/components/atoms/Input';
@@ -22,30 +23,33 @@ const PropertyFilters = ({ onFiltersChange, className = '' }) => {
     'Townhouse',
     'Multi-Family',
     'Land'
-  ];
+];
+
+  const { width } = useWindowSize();
+
+  const applyFilters = useCallback(() => {
+    const cleanFilters = Object.fromEntries(
+      Object.entries(filters).filter(([_, value]) => {
+if (Array.isArray(value)) return value.length > 0;
+        return value !== '' && value !== null && value !== undefined;
+      })
+    );
+    
+    // Convert string numbers to integers
+    ['priceMin', 'priceMax', 'bedroomsMin', 'bathroomsMin', 'squareFeetMin'].forEach(key => {
+      if (cleanFilters[key]) {
+        cleanFilters[key] = parseInt(cleanFilters[key], 10);
+      }
+    });
+
+    onFiltersChange(cleanFilters);
+  }, [filters, onFiltersChange]);
 
   useEffect(() => {
     // Debounced filter application
-    const timeoutId = setTimeout(() => {
-      const cleanFilters = Object.fromEntries(
-        Object.entries(filters).filter(([_, value]) => {
-          if (Array.isArray(value)) return value.length > 0;
-          return value !== '' && value !== null && value !== undefined;
-        })
-      );
-      
-      // Convert string numbers to integers
-      ['priceMin', 'priceMax', 'bedroomsMin', 'bathroomsMin', 'squareFeetMin'].forEach(key => {
-        if (cleanFilters[key]) {
-          cleanFilters[key] = parseInt(cleanFilters[key], 10);
-        }
-      });
-
-      onFiltersChange(cleanFilters);
-    }, 300);
-
+    const timeoutId = setTimeout(applyFilters, 300);
     return () => clearTimeout(timeoutId);
-  }, [filters, onFiltersChange]);
+  }, [applyFilters]);
 
   const handleFilterChange = (key, value) => {
     setFilters(prev => ({
@@ -94,14 +98,16 @@ const PropertyFilters = ({ onFiltersChange, className = '' }) => {
         </Button>
       </div>
 
-      {/* Filter Panel */}
-      <AnimatePresence>
-        {(isOpen || window.innerWidth >= 1024) && (
+{/* Filter Panel */}
+      <AnimatePresence mode="wait">
+        {(isOpen || width >= 1024) && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
             className="bg-white rounded-12 shadow-md p-6 space-y-6"
+            style={{ willChange: 'height' }}
           >
             {/* Header */}
             <div className="flex items-center justify-between">

@@ -1,6 +1,7 @@
-const SkeletonLoader = ({ count = 1, className = '', type = 'property' }) => {
-  const skeletons = Array.from({ length: count }, (_, index) => index);
+import React, { memo, useMemo } from "react";
 
+const SkeletonLoader = memo(({ count = 1, className = '', type = 'property' }) => {
+  const skeletons = useMemo(() => Array.from({ length: count }, (_, index) => index), [count]);
   const PropertySkeleton = () => (
     <div className="bg-white rounded-12 shadow-md overflow-hidden animate-pulse">
       <div className="h-48 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200"></div>
@@ -62,13 +63,15 @@ const SkeletonLoader = ({ count = 1, className = '', type = 'property' }) => {
 
   const SkeletonComponent = getSkeletonComponent();
 
-  return (
+return (
     <div className={className}>
       {skeletons.map((index) => (
         <SkeletonComponent key={index} />
       ))}
     </div>
   );
-};
+});
+
+SkeletonLoader.displayName = 'SkeletonLoader';
 
 export default SkeletonLoader;

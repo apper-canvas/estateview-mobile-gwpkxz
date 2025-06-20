@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import PropertyCard from '@/components/molecules/PropertyCard';
 
-const PropertyGrid = ({ properties = [], className = '' }) => {
+const PropertyGrid = memo(({ properties = [], className = '' }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,11 +24,12 @@ const PropertyGrid = ({ properties = [], className = '' }) => {
     }
   };
 
-  return (
+return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      layout
       className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${className}`}
     >
       {properties.map((property) => (
@@ -35,8 +37,10 @@ const PropertyGrid = ({ properties = [], className = '' }) => {
           <PropertyCard property={property} />
         </motion.div>
       ))}
-    </motion.div>
+</motion.div>
   );
-};
+});
+
+PropertyGrid.displayName = 'PropertyGrid';
 
 export default PropertyGrid;
